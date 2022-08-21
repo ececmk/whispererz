@@ -28,4 +28,7 @@ app.locals.appTitle = `${capitalized(projectName)}`;
 const index = require("./routes/index.routes")
 app.use("/", index);
 
+const auth = require("./routes/auth.routes");
+app.use("/auth", auth);
+
 module.exports = app;

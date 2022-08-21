@@ -1,0 +1,28 @@
+/* 
+
+21.08.2022
+
+1. npm i
+2. npm i bcrypt
+3. npm i dotenv
+
+4. added auth.routes
+5. added middleware -> isLoggedIn isLoggedOut inside route-guard.js
+
+6. working on auth.routes
+7. thinking about what was written ~ *petting a cat meanwhile*
+
+8. added auth.routes into app.js
+
+*==* TO DO *==*
+
+-> .hbs pages
+    => auth/signup, auth/login, /user/${possibleUser._id (profile page)
+        => logic: auth/.hbs is for login/signup/logout pages // user/.hbs is for profile
+    => secrets.hbs (main page)
+
+-> rethinking what data is needed on what .hbs-page
+
+-> setting up sessions
+
+*/
