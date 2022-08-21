@@ -17,14 +17,14 @@ router.get("/signup", isLoggedOut, (req, res) => {
   });
   
   router.post("/signup", isLoggedOut, (req, res) => {
-    const { username, password } = req.body; // <-- from signup page, what was entered
+    const { username, password, secret } = req.body; // <-- from signup page, what was entered
   
     bcrypt
       .genSalt(saltRounds)
       .then((salt) => bcrypt.hash(password, salt))
       .then((hashedPW) => {
         console.log("Hashed password: ", hashedPW);
-        return User.create({ username, password: hashedPW }); // <-- from User.model
+        return User.create({ username, password: hashedPW, secret }); // <-- from User.model
       })
       .then((newUser) => {
         const { username } = newUser;
