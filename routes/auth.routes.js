@@ -115,7 +115,7 @@ router.get("/:id", isLoggedIn, (req, res) => {
       const { username } = user;
       res.render("user/profile", { username });
     })
-    .catch((err) => console.log("Failure loading profile page", err));
+    .catch((err) => console.log("Error loading profile page", err));
 });
 
 */ 
