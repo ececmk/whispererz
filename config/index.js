@@ -42,9 +42,13 @@ module.exports = (app) => {
       secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: true,
+      cookie: {
+      maxAge: 1000 * 60 * 60 * 24, //equal to one day
+      },
       store: MongoStore.create({
         mongoUrl:
           process.env.MONGO_URL || "mongodb://localhost/whispererZ",
+          ttl: 60 * 60 * 24,
       }),
     })
   );
