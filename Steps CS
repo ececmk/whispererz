@@ -40,6 +40,12 @@
 8. added .env
 
 9. routing for secret-list / secret-create
+
+10. added user.routes.js
+
+11. -> fixing some git errors <- 
+
+12. updated cookie-logic
 */
 
 
