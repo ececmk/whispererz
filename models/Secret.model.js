@@ -17,7 +17,3 @@ const Secret = model('secret', secretSchema);
 
 module.exports = Secret;
 
-
-module.exports = Secret;
-
-
