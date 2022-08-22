@@ -14,13 +14,11 @@ const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
 }); */
 
 
-router.get("/share", isLoggedIn, (req, res) => {
-    res.render("secrets/share-secret"); // <-- .hbs page
-});  
+
 
 router.post("/share", isLoggedIn, (req, res) => {
-    const secret = req.body;
-    const { _id } = req.session.currentUser
+    const secret = req.body; // <-- taking secret from the body
+    const { _id } = req.session.currentUser // <-- rethinking if it makes sense to be here
     console.log('userID', _id)
     Secret.create({ secret })
     .then(newSecret =>  {
@@ -30,12 +28,16 @@ router.post("/share", isLoggedIn, (req, res) => {
     .catch(err => console.error(err))
 });  
 
-router.get("/edit/:secretId", isLoggedIn, (req, res) => { // <-- secretId, where to get that from?
+router.get("/secrets/read-secret", isLoggedIn, (req, res) => {
+    res.render("secrets/read-secret");
+})
+
+/* router.get("/edit/:secretId", isLoggedIn, (req, res) => { // <-- secretId, where to get that from?
     res.render("secrets/edit-secret"); // <-- .hbs page
 });  
 
 router.post("/edit", isLoggedIn, (req, res))
 
-router.post("/delete/:secretId", isLoggedIn (req, res))
+router.post("/delete/:secretId", isLoggedIn (req, res)) */
 
 module.exports = router
