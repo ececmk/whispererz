@@ -80,7 +80,7 @@ router.get("/signup", isLoggedOut, (req, res) => {
         // user is found, the password is correct
         req.session.userId =  possibleUser._id ; // <-- ._id from database
         console.log("Session info: ", req.session.userId);
-        res.redirect(`/user/${possibleUser._id}`); // <-- rethinking how we reach the user's profile cuz only the current user is allowed to see the own profile, not the one from other people by just entering /user/random-name
+        res.redirect("/auth/profile/"); // <-- rethinking how we reach the user's profile cuz only the current user is allowed to see the own profile, not the one from other people by just entering /user/random-name
       })
       .catch((err) => {
         console.log("Something went terribly wrong in the backend, thanks Christian", err);

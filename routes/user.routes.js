@@ -9,13 +9,13 @@ const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
   res.render("auth/profile");
 }); */
 
-router.get("/:id", isLoggedIn, (req, res) => {
+router.get("/login", isLoggedIn, (req, res) => {
   User.findById(req.params.id)
     .then((user) => {
       const { username } = user;
       res.render("auth/profile", { username });
     })
-    .catch((err) => console.log("Failure loading profile page", err));
+    .catch((err) => console.log("Error loading profile page", err));
 });
 
 module.exports = router;
