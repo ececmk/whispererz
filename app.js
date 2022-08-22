@@ -34,4 +34,7 @@ app.use("/auth", auth);
 const secretsRoutes = require("./routes/secrets.routes.js")
 app.use("/secrets", secretsRoutes)
 
+const user = require("./routes/user.routes");
+app.use("/auth", user);
+
 module.exports = app;

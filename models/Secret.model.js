@@ -15,7 +15,5 @@ const secretSchema = new Schema(
 
 const Secret = model('secret', secretSchema);
 
-
 module.exports = Secret;
-
 

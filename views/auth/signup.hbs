@@ -1,16 +1,23 @@
-<div id="form">
+ <img class="logo" src="../images/whispererz_logo.png" alt="">
+<div class="form">
   <form action="/auth/signup" method='POST'>
-
-    <label for="username"></label>
-    <input type="text" name="username" placeholder="Username" required />
-    <label for="password"></label>
-    <input type='password' name='password' placeholder='********' required />
-    <label for="secret"></label>
-    <input type='text' name='secret' placeholder="Tell us a secret!"required />
-    <button type='submit'>Sign up</button>
+  <div class="form-element">
+      <label for="username"></label>
+      <input class="user-input" type="text" name="username" placeholder="Username" required />
+    </div>
+    <div class="form-element">
+      <label for="password"></label>
+      <input class="user-input" type='password' name='password' placeholder='********' required />
+    </div>
+    <div class="form-element">
+      <label for="secret"></label>
+      <input class="secret-input" type='text' name='secret' placeholder="Tell us a secret!"required />
+    </div>
+    <button class="btn" type='submit'>Sign up</button>
     {{#if errorMessage}}
       <p class='error'>{{errorMessage}}</p>
     {{/if}}
   </form>
+  <p>Already a member?</p><a href="/login">Log in!</a>
 </div>
-    <p>Already a member?</p><a href="/login">Log in!</a>
+    
