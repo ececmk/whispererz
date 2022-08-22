@@ -1,45 +1,30 @@
-<nav>
+
+
+<div class="navbar">
+       
+    <img class="logo" src="../images/whispererz_logo.png" alt="">
     <ul>
         <li class='to-right'>
-            <a href='/auth/logout'>Logout</a>
+           <a href='/auth/read-secret'>Read Secrets</a>
         </li>
         <li class='to-right'>
-            <a href='/auth/read-secret'>Read Secrets</a>
+          <a href='/auth/share-secret'>Share Secrets</a>
+        </li>
+        <li class='to-right'>
+          <a href='/auth/logout'>Logout</a>
         </li>
     </ul>
-</nav>
-<h2>Welcome {{username}}!</h2>
+</div>
+
 <div class="user-secret-wrapper">
+    <h2>Welcome {{username}}!</h2>
     <div class="user-secret">
-    <p class="user-secret-text"></p>
-    <button class="edit-button">Edit</button>
-    <button class="delete-buton">Delete</button>
-</div>
-<div class="user-secret">
-    <p class="user-secret-text"></p>
-    <button class="edit-button">Edit</button>
-    <button class="delete-buton">Delete</button>
-</div>
-<div class="user-secret">
-    <p class="user-secret-text"></p>
-    <button class="edit-button">Edit</button>
-    <button class="delete-buton">Delete</button>
-</div>
-<div class="user-secret">
-    <p class="user-secret-text"></p>
-    <button class="edit-button">Edit</button>
-    <button class="delete-buton">Delete</button>
-</div>
-<div class="user-secret">
-    <p class="user-secret-text"></p>
-    <button class="edit-button">Edit</button>
-    <button class="delete-buton">Delete</button>
-</div>
-<div class="user-secret">
-    <p class="user-secret-text"></p>
-    <button class="edit-button">Edit</button>
-    <button class="delete-buton">Delete</button>
-</div>
-</div>
+        <p class="user-secret-text"></p>
+        <button class="edit-button btn-small">Edit</button>
+        <button class="delete-buton btn-small">Delete</button>
+    </div>
+    
 <p>You shared X secrets.</p>
 <p>You are ready to read Y secrets</p>
+</div>
+
