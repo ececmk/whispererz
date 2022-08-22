@@ -8,10 +8,16 @@
     },
     "dependencies": {
         "bcrypt": "^5.0.1",
+<<<<<<< HEAD
         "bcryptjs": "^2.4.3",
+=======
+        "connect-mongo": "^4.6.0",
+        "connect-mongodb-session": "^3.1.1",
+>>>>>>> 6986ce34f977cc0b84b3079d7bd811af13a2763e
         "cookie-parser": "^1.4.6",
         "dotenv": "^16.0.1",
         "express": "^4.18.1",
+        "express-session": "^1.17.3",
         "hbs": "^4.2.0",
         "mongoose": "^6.5.2",
         "morgan": "^1.10.0",

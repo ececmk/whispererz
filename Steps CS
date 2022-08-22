@@ -25,4 +25,21 @@
 
 -> setting up sessions
 
+22.08.2022
+
+1. added secrets-routes
+2. added secrets.routes into app.js
+
+3. npm i dotenv
+4. npm i connect-mongodb-session
+5. npm i connect-mongo
+6. npm i express-session
+
+7. trying out sessions @ index.js
+
+8. added .env
+
+9. routing for secret-list / secret-create
 */
+
+
