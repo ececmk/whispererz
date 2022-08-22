@@ -9,12 +9,14 @@ const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
     Secrets.find() // <-- all secrets shared from ur profile
     .populate("owner")
     .then(secrets => 
-    res.render("secrets/secret-list", secrets)) // <-- .hbs page
+    res.render("secrets/secret-list", { secrets })) // <-- .hbs page
     .catch(err => console.error(err))
 }); */
 
 
-
+router.get("/share", isLoggedIn, (req, res) => {
+    res.render("secrets/share-secret")
+});
 
 router.post("/share", isLoggedIn, (req, res) => {
     const secret = req.body; // <-- taking secret from the body
@@ -32,10 +34,10 @@ router.get("/secrets/read-secret", isLoggedIn, (req, res) => {
     res.render("secrets/read-secret");
 })
 
-/* router.get("/edit/:secretId", isLoggedIn, (req, res) => { // <-- secretId, where to get that from?
+ router.get("/edit/:secretId", isLoggedIn, (req, res) => { // <-- secretId, where to get that from?
     res.render("secrets/edit-secret"); // <-- .hbs page
 });  
-
+/* 
 router.post("/edit", isLoggedIn, (req, res))
 
 router.post("/delete/:secretId", isLoggedIn (req, res)) */
