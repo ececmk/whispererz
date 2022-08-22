@@ -1,3 +1,4 @@
+
 const { Schema, model } = require('mongoose');
 
 const secretSchema = new Schema(
@@ -14,4 +15,6 @@ const secretSchema = new Schema(
 
 const secret = model('secret', secretSchema);
 
-module.exports = Room;
+
+module.exports = secret;
+
