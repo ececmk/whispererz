@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const mongoose = require('mongoose');
 
-const Secrets = require('../models/Secret.model');
+const Secret = require('../models/Secret.model');
 
 const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
 
@@ -21,6 +21,11 @@ router.get("/share", isLoggedIn, (req, res) => {
 router.post("/share", isLoggedIn, (req, res) => {
     const secret = req.body;
     const { id } = req.session.currentUser
+    console.log('userID', id)
+    Secret.create({ secret })
+    .then(newSecret =>  {
+        console.log('secret', newSecret)
+        res.redirect("/secrets/secret-list")})
 });  
 
 module.exports = router
