@@ -39,9 +39,9 @@ module.exports = (app) => {
   app.use(
     session({
       name: "whispererZ",
-      secret: process.env.SESSION_SECRET || "lasdkfjghsdfklgjhsdfkljghsdfljkgh",
+      secret: process.env.SESSION_SECRET,
       resave: false,
-      saveUninitialized: false,
+      saveUninitialized: true,
       store: MongoStore.create({
         mongoUrl:
           process.env.MONGO_URL || "mongodb://localhost/whispererZ",
