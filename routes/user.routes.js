@@ -1,5 +1,4 @@
-const express = require("express");
-const router = express.Router();
+const router = require('express').Router();
 
 const User = require("../models/User.model");
 
@@ -9,7 +8,7 @@ const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
   res.render("auth/profile");
 }); */
 
-router.get("/login", isLoggedIn, (req, res) => {
+router.get("/auth/profile", isLoggedIn, (req, res) => {
   User.findById(req.params.id)
     .then((user) => {
       const { username } = user;
