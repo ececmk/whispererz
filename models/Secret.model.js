@@ -15,10 +15,9 @@ const secretSchema = new Schema(
 
 const Secret = model('secret', secretSchema);
 
-<<<<<<< HEAD
 module.exports = Secret;
-=======
 
-module.exports = secret;
 
->>>>>>> 6986ce34f977cc0b84b3079d7bd811af13a2763e
+module.exports = Secret;
+
+
