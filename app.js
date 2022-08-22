@@ -31,4 +31,10 @@ app.use("/", index);
 const auth = require("./routes/auth.routes");
 app.use("/auth", auth);
 
+const secretsRoutes = require("./routes/secrets.routes")
+app.use("/secrets", secretsRoutes)
+
+const user = require("./routes/user.routes");
+app.use("/auth", user);
+
 module.exports = app;

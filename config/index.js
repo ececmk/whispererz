@@ -13,6 +13,12 @@ const cookieParser = require("cookie-parser");
 // https://www.npmjs.com/package/path
 const path = require("path");
 
+//  connecting to mongo
+const MongoStore = require("connect-mongo");
+
+// SESSIONS
+const session = require("express-session");
+
 // Middleware configuration
 module.exports = (app) => {
   // In development environment the app logs
@@ -30,4 +36,28 @@ module.exports = (app) => {
   // Handles access to the public folder
   app.use(express.static(path.join(__dirname, "..", "public")));
   
+  app.use(
+    session({
+      name: "whispererZ",
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: true,
+      cookie: {
+      maxAge: 1000 * 60 * 60 * 24, //equal to one day
+      },
+      store: MongoStore.create({
+        mongoUrl:
+          process.env.MONGO_URL || "mongodb://localhost/whispererZ",
+          ttl: 60 * 60 * 24,
+      }),
+    })
+  );
+
+  app.use((req, res, next) => {
+    if (req.session.userId) {
+      res.locals.isLoggedIn = true;
+    }
+    next();
+  });
+
 };
