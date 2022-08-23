@@ -9,7 +9,7 @@ const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
     Secrets.find() // <-- all secrets shared from ur profile
     .populate("owner")
     .then(secrets => 
-    res.render("secrets/secret-list", { secrets })) // <-- .hbs page
+    res.render("auth", { secrets })) // <-- .hbs page
     .catch(err => console.error(err))
 }); */
 
