@@ -97,6 +97,7 @@ li {
 /* User Profile */
 
 .user-secret-wrapper {
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
