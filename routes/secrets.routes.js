@@ -18,7 +18,7 @@ router.get("/secrets/share-secret", isLoggedIn, (req, res) => {
     res.render("/secrets/share-secret")
 });
 
-router.post("secrets/read-secret", isLoggedIn, (req, res) => {
+router.post("secrets/share-secret", isLoggedIn, (req, res) => {
     const secret = req.body; // <-- taking secret from the body
     const { _id } = req.session.currentUser // <-- rethinking if it makes sense to be here
     console.log('userID', _id)
