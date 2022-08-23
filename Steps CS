@@ -1,0 +1,67 @@
+/* 
+
+21.08.2022
+
+1. npm i
+2. npm i bcrypt
+3. npm i dotenv
+
+4. added auth.routes
+5. added middleware -> isLoggedIn isLoggedOut inside route-guard.js
+
+6. working on auth.routes
+7. thinking about what was written ~ *petting a cat meanwhile*
+
+8. added auth.routes into app.js
+
+*==* TO DO *==*
+
+-> .hbs pages
+    => auth/signup, auth/login, /user/${possibleUser._id (profile page)
+        => logic: auth/.hbs is for login/signup/logout pages // user/.hbs is for profile
+    => secrets.hbs (main page)
+
+-> rethinking what data is needed on what .hbs-page
+
+-> setting up sessions
+
+22.08.2022
+
+1. added secrets-routes
+2. added secrets.routes into app.js
+
+3. npm i dotenv
+4. npm i connect-mongodb-session
+5. npm i connect-mongo
+6. npm i express-session
+
+7. trying out sessions @ index.js
+
+8. added .env
+
+9. routing for secret-list / secret-create
+
+10. added user.routes.js
+
+11. -> fixing some git errors <- 
+
+12. updated cookie-logic
+
+13. login -> working
+
+14. seed.js created -> database seeded
+
+23.08.2022
+
+1. fixed ../ in layout.hbs
+
+2. changed middleware from /login to /auth/login
+
+
+3. why does isLoggedIn not work when read secrets
+
+3. share secret route working without function
+
+*/
+
+
