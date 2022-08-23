@@ -13,8 +13,7 @@ const secretSchema = new Schema(
   }
 );
 
-const secret = model('secret', secretSchema);
+const Secret = model('secret', secretSchema);
 
-
-module.exports = secret;
+module.exports = Secret;
 
