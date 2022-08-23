@@ -13,10 +13,6 @@ const userSchema = new Schema(
       required: [true, 'Password is required.'],
       trim: true,
     },
-    secret: {
-      type: String,
-      required: [true, 'You need to share a secret before reading others'],
-    },
   },
   {
     timestamps: true,

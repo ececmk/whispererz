@@ -7,6 +7,7 @@ const secretSchema = new Schema(
       type: String,
       required: [true, 'You need to share a secret.'],
     },
+    owner: { type: Schema.Types.ObjectId, ref: "User" }
   },
   {
     timestamps: true,
