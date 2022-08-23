@@ -1,3 +1,5 @@
+//=======================================| require |=======================================//
+
 const router = require('express').Router();
 const mongoose = require('mongoose');
 
@@ -5,37 +7,39 @@ const Secret = require('../models/Secret.model');
 
 const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
 
-/* router.get("/secrets", isLoggedIn, (req, res) => {
-    Secret.find() // <-- all secrets shared from ur profile
-    .populate("owner")
-    .then(secrets => 
-    res.render("/auth/profile", { secrets })) // <-- .hbs page
-    .catch(err => console.error(err))
-});  */
-
+//=======================================| share a secret |=======================================//
 
 router.get("/share-secret", (req, res) => {
     res.render("secrets/share-secret")
 });
 
-router.post("/share-secret", isLoggedIn, (req, res) => {
-    const secret = req.body; // <-- taking secret from the body
-    const { _id } = req.session.currentUser // <-- rethinking if it makes sense to be here
-    console.log('userID', _id)
+router.post("/share-secret", (req, res) => {
+    const { secret } = req.body; // <-- taking secret from the body
+    console.log('info', req.body)
     Secret.create({ secret })
     .then(newSecret =>  {
         console.log('secret', newSecret)
 
-        res.redirect("/read-secret")
+        res.redirect("/secrets/read-secret")
 
 
     })
     .catch(err => console.error(err))
 });  
 
+//=======================================| read a secret |=======================================//
+
 router.get("/read-secret", (req, res) => {
-    res.render("secrets/read-secret");
-})
+    Secret.find()
+    .then(secret =>
+        res.render("secrets/read-secret"), { Secret } )
+    .catch(err => console.error(err))
+    console.log("Secret", { Secret })
+});
+
+//=======================================| edit a secret |=======================================//
+
+
 
  router.get("/edit/:secretId", isLoggedIn, (req, res) => { // <-- secretId, where to get that from?
     res.render("secrets/edit-secret"); // <-- .hbs page

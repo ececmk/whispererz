@@ -1,3 +1,5 @@
+//=======================================| require |=======================================//
+
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
@@ -9,7 +11,7 @@ const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
 const saltRounds = 10;
 
 
-// SIGNUP
+//=======================================| Sign Up |=======================================//
 
 
 router.get("/signup", isLoggedOut, (req, res) => {
@@ -24,7 +26,7 @@ router.get("/signup", isLoggedOut, (req, res) => {
       .then((salt) => bcrypt.hash(password, salt))
       .then((hashedPW) => {
         console.log("Hashed password: ", hashedPW);
-        return User.create({ username, password: hashedPW, secret }); // <-- from User.model
+        return User.create({ username, password: hashedPW, secret }); // <-- User.model
       })
       .then((newUser) => {
         console.log("new user", newUser)
@@ -36,23 +38,23 @@ router.get("/signup", isLoggedOut, (req, res) => {
   });
   
  
-  // LOG IN
+//=======================================| Log In |=======================================//
 
 
-  router.get("/login", isLoggedOut, (req, res) => res.render("auth/login"));  // <-- .hbs page
+  router.get("/login", isLoggedOut, (req, res) => res.render("auth/login"));   // <-- .hbs page
   
   router.post("/login", (req, res) => {
-    const { username, password } = req.body; // <-- taking the username / password from the body of auth/login.hbs
+    const { username, password } = req.body;  // <-- taking the username / password from the body of auth/login.hbs
   
-    if (!username) {
-      res.render("auth/login", { // <-- .hbs page
+    if (!username) {                          // <-- no username
+      res.render("auth/login", {              // <-- .hbs page
         usernameError: "No username provided",
       });
       return;
     }
   
-    if (!password) {
-      return res.render("auth/login", { // <-- .hbs page
+    if (!password) {                          // <-- no password
+      return res.render("auth/login", {       // <-- .hbs page
         passwordError: "No password provided",
       });
     }
@@ -60,7 +62,7 @@ router.get("/signup", isLoggedOut, (req, res) => {
     User.findOne({ username })
       .then((possibleUser) => {
         if (!possibleUser) {
-          return res.render("auth/login", { // <-- .hbs page
+          return res.render("auth/login", {   // <-- .hbs page
             generalError: "Wrong user",
           });
         }
@@ -89,7 +91,7 @@ router.get("/signup", isLoggedOut, (req, res) => {
   });
   
  
-  // LOGOUT
+//=======================================| Log Out |=======================================//
   
 
   router.get("/logout", isLoggedIn, (req, res) => {
@@ -103,20 +105,3 @@ router.get("/signup", isLoggedOut, (req, res) => {
   });
   
   module.exports = router;
-
-  /* will leave this here for now
-
-  router.get("/", isLoggedIn, (req, res) => {
-  res.render("user/welcome");
-});
-
-router.get("/:id", isLoggedIn, (req, res) => {
-  User.findById(req.params.id)
-    .then((user) => {
-      const { username } = user;
-      res.render("user/profile", { username });
-    })
-    .catch((err) => console.log("Error loading profile page", err));
-});
-
-*/ 
