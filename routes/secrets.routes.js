@@ -26,7 +26,7 @@ router.post("/share-secret", (req, res) => {
     .then(newSecret =>  {
         console.log('secret', newSecret)
 
-        res.redirect("/secrets/share-secret")
+        res.redirect("/secrets/read-secret")
 
 
     })
