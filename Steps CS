@@ -57,10 +57,18 @@
 
 2. changed middleware from /login to /auth/login
 
-
 3. why does isLoggedIn not work when read secrets
 
-3. share secret route working without function
+4. share secret route working without function
+
+5. updated logout function
+
+6. share secret route -> error cuz of spaghetti code
+
+7. share secret route working -> redirecting to read secrets
+
+8. during break, made things look nice :D (and petted a cat)
+
 
 */
 
