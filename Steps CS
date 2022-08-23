@@ -50,6 +50,14 @@
 13. login -> working
 
 14. seed.js created -> database seeded
+
+23.08.2022
+
+1. fixed ../ in layout.hbs
+
+2. changed middleware from /login to /auth/login
+
+3.
 */
 
 
