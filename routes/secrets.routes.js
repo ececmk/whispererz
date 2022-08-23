@@ -18,8 +18,8 @@ router.get("/share-secret", (req, res) => {
     res.render("secrets/share-secret")
 });
 
-router.post("/share-secret", isLoggedIn, (req, res) => {
-    const secret = req.body; // <-- taking secret from the body
+router.post("/share-secret", (req, res) => {
+    const { secret } = req.body; // <-- taking secret from the body
     const { _id } = req.session.currentUser // <-- rethinking if it makes sense to be here
     console.log('userID', _id)
     Secret.create({ secret })
