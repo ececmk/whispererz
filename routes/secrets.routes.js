@@ -25,7 +25,10 @@ router.post("/share-secret", isLoggedIn, (req, res) => {
     Secret.create({ secret })
     .then(newSecret =>  {
         console.log('secret', newSecret)
+
         res.redirect("/read-secret")
+
+
     })
     .catch(err => console.error(err))
 });  
