@@ -1,12 +1,18 @@
+//=======================================| require |=======================================//
+
 const router = require('express').Router();
 
 const User = require("../models/User.model");
 
 const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
 
+//=======================================| Profile I |=======================================//
+
  router.get("/", isLoggedIn, (req, res) => {
   res.render("auth/profile");
 }); 
+
+//=======================================| Profile II |=======================================//
 
 router.get("/auth/profile", isLoggedIn, (req, res) => {
   User.findById(req.params.id)
