@@ -14,11 +14,11 @@ const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
 });  */
 
 
-router.get("/share-secret", isLoggedIn, (req, res) => {
+router.get("/secrets/share-secret", isLoggedIn, (req, res) => {
     res.render("/secrets/share-secret")
 });
 
-router.post("/read-secret", isLoggedIn, (req, res) => {
+router.post("secrets/read-secret", isLoggedIn, (req, res) => {
     const secret = req.body; // <-- taking secret from the body
     const { _id } = req.session.currentUser // <-- rethinking if it makes sense to be here
     console.log('userID', _id)
