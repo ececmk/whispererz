@@ -6,19 +6,19 @@ const Secret = require('../models/Secret.model');
 const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
 
 /* router.get("/secrets", isLoggedIn, (req, res) => {
-    Secrets.find() // <-- all secrets shared from ur profile
+    Secret.find() // <-- all secrets shared from ur profile
     .populate("owner")
     .then(secrets => 
-    res.render("auth", { secrets })) // <-- .hbs page
+    res.render("/auth/profile", { secrets })) // <-- .hbs page
     .catch(err => console.error(err))
-}); */
+});  */
 
 
-router.get("/share", isLoggedIn, (req, res) => {
-    res.render("secrets/share-secret")
+router.get("/secrets/share-secret", isLoggedIn, (req, res) => {
+    res.render("/secrets/share-secret")
 });
 
-router.post("/share", isLoggedIn, (req, res) => {
+router.post("secrets/read-secret", isLoggedIn, (req, res) => {
     const secret = req.body; // <-- taking secret from the body
     const { _id } = req.session.currentUser // <-- rethinking if it makes sense to be here
     console.log('userID', _id)
@@ -38,7 +38,8 @@ router.get("/secrets/read-secret", isLoggedIn, (req, res) => {
     res.render("secrets/edit-secret"); // <-- .hbs page
 });  
 /* 
-router.post("/edit", isLoggedIn, (req, res))
+ router.post("/edit/:secretId", isLoggedIn, (req, res) => { // <-- secretId, where to get that from?
+    res.render("secrets/edit-secret"); // <-- .hbs page
 
 router.post("/delete/:secretId", isLoggedIn (req, res)) */
 
