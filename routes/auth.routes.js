@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 
 const User = require('../models/User.model');
+const Secret = require('../models/Secret.model');
 
 const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
 
@@ -29,6 +30,7 @@ router.get("/signup", isLoggedOut, (req, res) => {
       .then((newUser) => {
         console.log("new user", newUser)
         const { username } = newUser;
+        Secret.create({secret, owner:newUser.id})
         console.log(`Welcome ${username}!`);
         res.redirect("/auth/login"); // <-- redirecting to the .hbs page
       })
