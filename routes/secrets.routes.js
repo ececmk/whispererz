@@ -20,13 +20,13 @@ router.get("/share-secret", (req, res) => {
 
 router.post("/share-secret", (req, res) => {
     const { secret } = req.body; // <-- taking secret from the body
-    const { _id } = req.session.currentUser // <-- rethinking if it makes sense to be here
-    console.log('userID', _id)
+    // const { _id } = req.session.currentUser // <-- rethinking if it makes sense to be here 
+    console.log('info', req.body)
     Secret.create({ secret })
     .then(newSecret =>  {
         console.log('secret', newSecret)
 
-        res.redirect("/read-secret")
+        res.redirect("/secrets/share-secret")
 
 
     })
