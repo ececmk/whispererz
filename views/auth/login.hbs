@@ -1,10 +1,15 @@
-<div id="form">
+ <img class="logo" src="../images/whispererz_logo.png" alt="">
+<div class="form">
   <form action="/auth/login" method="POST">
-    <label for=Username></label>
-    <input type="text" name="username" placeholder="Username" required />
-    <label for="password"> Password </label>
-    <input type='password' name='password' placeholder='********' required />
-    <button type="submit">Login</button>
+  <div class="form-element">
+     <label for=Username></label>
+    <input class="user-input" type="text" name="username" placeholder="Username" required />
+  </div>
+  <div class="form-element">
+    <label for="password"></label>
+    <input class="user-input"  type='password' name='password' placeholder='********' required />
+  </div>
+    <button class="btn"type="submit">Login</button>
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
     {{/if}}
