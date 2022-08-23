@@ -1,9 +1,13 @@
+//=======================================| require |=======================================//
+
 const mongoose = require('mongoose');
 const Secret = require('../models/Secret.model');
 
 const MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost/whispererZ";
 
 const secrets = [ 
+
+//=======================================| Secrets to seed |=======================================//
 
     { secret: "I have slept with my auntie, then killed her. -lonelywolf123" },
 
@@ -26,6 +30,7 @@ const secrets = [
     { secret: "To be honest Im dead inside. -mountainStyle", },
 ];
 
+//=======================================| Connection to DB |=======================================//
 
 mongoose
   .connect(MONGO_URI)
