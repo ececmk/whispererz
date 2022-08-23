@@ -57,7 +57,11 @@
 
 2. changed middleware from /login to /auth/login
 
+
+3. why does isLoggedIn not work when read secrets
+
 3. share secret route working without function
+
 */
 
 
