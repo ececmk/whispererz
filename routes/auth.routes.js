@@ -15,11 +15,11 @@ const saltRounds = 10;
 //=======================================| Sign Up |=======================================//
 
 
-router.get("/signup", isLoggedOut, (req, res) => {
+router.get("/signup",  (req, res) => {
   res.render("auth/signup"); // <-- .hbs page
 });
 
-router.post("/signup", isLoggedOut, (req, res) => {
+router.post("/signup",  (req, res) => {
   const { username, password, secret } = req.body; // <-- from signup page, what was entered
 
   bcrypt
