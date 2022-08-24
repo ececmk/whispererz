@@ -3,26 +3,26 @@
 const router = require('express').Router();
 
 const User = require("../models/User.model");
+const Secret = require('../models/Secret.model');
 
 const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
 
 //=======================================| Profile I |=======================================//
 
- router.get("/", isLoggedIn, (req, res) => {
-  res.render("auth/profile");
-}); 
-
-//=======================================| Profile II |=======================================//
-
-router.get("/auth/profile", isLoggedIn, (req, res) => {
-  User.findById(req.params.id)
+ router.get("/profile", (req, res) => {
+  const userId = req.session.currentUser
+  console.log("userId",userId)
+  if(!userId){
+    res.redirect("login")
+  }
+  User.findOne({userId})
     .then((user) => {
       const { username } = user;
-      res.render("./auth/profile", { username });
+      Secret.find({ owner: userId }).then(secrets => {
+        res.render("auth/profile", { data: { user: username, secretList: secrets } });
+      })
     })
     .catch((err) => console.log("Error loading profile page", err));
-});
-
-router.get("/profile", (req, res) => res.render("auth/profile"));
+}); 
 
 module.exports = router;
