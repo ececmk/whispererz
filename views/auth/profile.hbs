@@ -9,18 +9,20 @@
           <a href='/secrets/share-secret'>Share Secrets</a>
         </li>
         <li class='to-right'>
-          <a href='/index'>Logout</a>
+          <a href='/'>Logout</a>
         </li>
     </ul>
 </div>
 
 <div class="user-secret-wrapper">
-    <h2>Welcome {{username}}!</h2>
+    <h2>Welcome {{data.user}}!</h2>
+    {{#each data.secretList}}
     <div class="user-secret">
-        <p class="user-secret-text">{{secret}}</p>
-        <button class="edit-button btn-small">Edit</button>
+        <p class="user-secret-text">{{this.secret}}</p>
+       <!--<button class="edit-button btn-small">Edit</button>--->
         <button class="delete-buton btn-small">Delete</button>
     </div>
+    {{/each}}
     
 <p>You shared X secrets.</p>
 <p>You are ready to read Y secrets</p>

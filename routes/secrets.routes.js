@@ -15,8 +15,9 @@ router.get("/share-secret", (req, res) => {
 
 router.post("/share-secret", (req, res) => {
     const { secret } = req.body; // <-- taking secret from the body
+    const _id = req.session.currentUser
     console.log('info', req.body)
-    Secret.create({ secret })
+    Secret.create({ secret, owner: _id })
     .then(newSecret =>  {
         console.log('secret', newSecret)
 
@@ -26,6 +27,14 @@ router.post("/share-secret", (req, res) => {
     })
     .catch(err => console.error(err))
 });  
+
+//Show user secrets// Ece added this part
+router.get("/profile", (req, res) => {
+    const { _id } = req.session.currentUser
+    Secret.find({owner: _id}).then(secrets => {
+        res.render("auth/profile", {secrets});
+    })
+} )
 
 //=======================================| read a secret |=======================================//
 
