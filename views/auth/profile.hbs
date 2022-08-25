@@ -1,5 +1,4 @@
-<div class="navbar">
-       
+<div class="navbar">    
    <img class="logo" src="/images/whispererz_logo.png" alt="">
     <ul>
         <li class='to-right'>
@@ -16,9 +15,7 @@
 
 <div class="user-secret-wrapper">
     <h2>Welcome {{username}}!</h2>
-
     {{#each secrets}}
-    <div class="user-secret">
         <p class="user-secret-text">{{secret}}</p>
         <a href='/secrets/edit/{{id}}'><button class="btn-small">Edit</button></a>
         <a href='/secrets/delete/{{id}}'><button class="btn-small">Delete</button></a>
