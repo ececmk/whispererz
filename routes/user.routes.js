@@ -1,28 +1,36 @@
-//=======================================| require |=======================================//
-
 const router = require('express').Router();
 
 const User = require("../models/User.model");
-const Secret = require('../models/Secret.model');
 
 const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
+const Secret = require('../models/Secret.model');
 
-//=======================================| Profile I |=======================================//
+router.get("/", isLoggedIn, (req, res) => {
+  res.render("auth/profile");
+});
 
- router.get("/profile", (req, res) => {
-  const userId = req.session.currentUser
-  console.log("userId",userId)
-  if(!userId){
-    res.redirect("login")
-  }
-  User.findOne({userId})
+router.get("/profile", isLoggedIn, (req, res) => {
+  User.findById(req.session.userId)
     .then((user) => {
-      const { username } = user;
-      Secret.find({ owner: userId }).then(secrets => {
-        res.render("auth/profile", { data: { user: username, secretList: secrets } });
-      })
+      console.log(user);
+      const { username, credit } = user;
+
+      return Secret.find({ owner: req.session.userId }).then((secrets) => {
+        return {
+          secrets,
+          username,
+          credit
+        }
+      });
+    })
+    .then(({ username, secrets,credit }) => {
+      res.render("./auth/profile", {
+        username,
+        secrets,
+        credit
+      });
     })
     .catch((err) => console.log("Error loading profile page", err));
-}); 
+});
 
 module.exports = router;
