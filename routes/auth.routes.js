@@ -14,8 +14,7 @@ const saltRounds = 10;
 
 
 
-router.get("/signup", isLoggedOut, (req, res) => {
-  res.render("auth/signup");
+
 router.get("/signup",  (req, res) => {
   res.render("auth/signup"); // <-- .hbs page
 });
