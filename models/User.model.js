@@ -13,7 +13,7 @@ const userSchema = new Schema(
       required: [true, 'Password is required.'],
       trim: true,
     },
-    credit: {
+    /*credit: {
       type: Number,
     },
   },

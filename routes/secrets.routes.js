@@ -26,6 +26,7 @@ router.post("/share-secret", isLoggedIn, (req, res) => {
     Secret.create({ secret, owner: _id })
         .then(newSecret => {
             console.log('secret', newSecret)
+            console.log("user", User)
             User.findById(req.session.userId).then(user => {
                 return user.updateOne({ credit: user.credit + 5 })
             }).then(() => {
@@ -51,7 +52,7 @@ router.get("/read-secret", isLoggedIn, (req, res) => {
                     })
                 })
         } else {
-            res.render("secrets/read-secret", { creditError: 'You have no creadit to read a secret. You need to share a secret' });
+            res.render("secrets/read-secret", { creditError: 'You have no credit to read a secret. You need to share a secret' });
         }
 
     })
