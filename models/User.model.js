@@ -12,10 +12,10 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Password is required.'],
       trim: true,
-    },
-    /*credit: {
+   },
+    credit: {
       type: Number,
-    },*/
+    },
   },
   {
     timestamps: true,
