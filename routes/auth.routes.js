@@ -15,7 +15,7 @@ const saltRounds = 10;
 
 
 
-router.get("/signup",  (req, res) => {
+router.get("/signup", (req, res) => {
   res.render("auth/signup"); // <-- .hbs page
 });
 
@@ -28,7 +28,7 @@ router.post("/signup",  (req, res) => {
     .then((hashedPW) => {
       console.log("Hashed password: ", hashedPW);
 
-      return User.create({ username, password: hashedPW, /*credit: 5 */}); // <-- from User.model
+      return User.create({ username, password: hashedPW, credit: parseInt(5) }); // <-- from User.model
     })
     .then((newUser) => {
       console.log("new user", newUser)
@@ -49,7 +49,7 @@ router.post("/signup",  (req, res) => {
 
 
 // LOG IN
-router.get("/login", isLoggedOut, (req, res) => {
+router.get("/login", (req, res) => {
   res.render("auth/login")
 });
 
