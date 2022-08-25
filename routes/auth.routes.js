@@ -28,7 +28,7 @@ router.post("/signup",  (req, res) => {
     .then((hashedPW) => {
       console.log("Hashed password: ", hashedPW);
 
-      return User.create({ username, password: hashedPW, /*credit: 5 */}); // <-- from User.model
+      return User.create({ username, password: hashedPW, credit: 5 }); // <-- from User.model
     })
     .then((newUser) => {
       console.log("new user", newUser)

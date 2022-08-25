@@ -102,16 +102,23 @@ li {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: Barlow;
+  font-weight: 400;
 }
 .user-secret {
-    display: flex;
-   flex-direction: column;
-   justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 .user-secret-text {
-    width: 300px;
-    height: 200px;
-    border: 1px black solid;
+  width: 300px;
+  height: 200px;
+  border: 1px black solid;
+  border-radius: 10px;
+  padding-top: 20px;
+  background-color: #FDEEDC;
+  font-weight: 400;
 }
 
 .btn-small {
@@ -124,7 +131,7 @@ li {
     color: #FFD06B;
     font-size: 12px;
     font-weight: 100;
-    padding: 10px;
+    padding: 10px 60px;
     box-shadow: 1px 1px 20px 0 #000000;
     text-shadow: 1px 1px 20px #000000;
     text-decoration: none;

@@ -20,12 +20,8 @@
     {{#each secrets}}
     <div class="user-secret">
         <p class="user-secret-text">{{secret}}</p>
-        {{!-- <button class="edit-button btn-small">Edit</button> --}}
-        <a href='/secrets/edit/{{id}}'>Edit</a>
-        <a href='/secrets/delete/{{id}}'>Delete</a>
-
-        {{!-- <button class="delete-buton btn-small">Delete</button> --}}
-    </div>
+        <a href='/secrets/edit/{{id}}'><button class="btn-small">Edit</button></a>
+        <a href='/secrets/delete/{{id}}'><button class="btn-small">Delete</button></a>
     {{/each}}
     
 <p>You shared {{ secrets.length }} secrets.</p>
