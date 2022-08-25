@@ -1,5 +1,3 @@
-//=======================================| require |=======================================//
-
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
@@ -12,11 +10,11 @@ const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
 const saltRounds = 10;
 
 
-//=======================================| Sign Up |=======================================//
+// SIGNUP
 
 
 router.get("/signup", isLoggedOut, (req, res) => {
-  res.render("auth/signup"); // <-- .hbs page
+  res.render("auth/signup");
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
@@ -27,38 +25,44 @@ router.post("/signup", isLoggedOut, (req, res) => {
     .then((salt) => bcrypt.hash(password, salt))
     .then((hashedPW) => {
       console.log("Hashed password: ", hashedPW);
-      return User.create({ username, password: hashedPW, secret }); // <-- User.model
+
+      return User.create({ username, password: hashedPW, /*credit: 5 */}); // <-- from User.model
     })
     .then((newUser) => {
       console.log("new user", newUser)
       const { username } = newUser;
-      return Secret.create({ secret, owner: newUser.id })
+      console.log(`Welcome ${username}!`);
+
+      return Secret.create({ secret, owner: newUser.id });
     })
     .then(() => {
-      console.log(`Welcome ${username}!`);
       res.redirect("/auth/login"); // <-- redirecting to the .hbs page
     })
-    .catch((err) => console.log("No new user created.", err));
+    .catch((err) => {
+      console.log("No new user created.", err)
+
+      res.render("auth/signup", { errorMessage: 'Username is already taken' });
+    });
 });
 
 
-//=======================================| Log In |=======================================//
-
-
-router.get("/login", (req, res) => res.render("auth/login"));   // <-- .hbs page
+// LOG IN
+router.get("/login", isLoggedOut, (req, res) => {
+  res.render("auth/login")
+});
 
 router.post("/login", (req, res) => {
-  const { username, password } = req.body;  // <-- taking the username / password from the body of auth/login.hbs
+  const { username, password } = req.body; // <-- taking the username / password from the body of auth/login.hbs
 
-  if (!username) {                          // <-- no username
-    res.render("auth/login", {              // <-- .hbs page
+  if (!username) {
+    res.render("auth/login", { // <-- .hbs page
       usernameError: "No username provided",
     });
     return;
   }
 
-  if (!password) {                          // <-- no password
-    return res.render("auth/login", {       // <-- .hbs page
+  if (!password) {
+    return res.render("auth/login", { // <-- .hbs page
       passwordError: "No password provided",
     });
   }
@@ -66,7 +70,7 @@ router.post("/login", (req, res) => {
   User.findOne({ username })
     .then((possibleUser) => {
       if (!possibleUser) {
-        return res.render("auth/login", {   // <-- .hbs page
+        return res.render("auth/login", { // <-- .hbs page
           generalError: "Wrong user",
         });
       }
@@ -84,21 +88,24 @@ router.post("/login", (req, res) => {
       }
 
       // user is found, the password is correct
-      req.session.currentUser = possibleUser._id; // <-- ._id from database
-      res.redirect('profile');
-    });
-})
+      req.session.userId = possibleUser._id; // <-- ._id from database
+      req.session.currentUser = possibleUser;
+      console.log("Session info: ", req.session.userId);
 
-
-//=======================================| Log Out |=======================================//
-
-
-  router.get("/logout", (req, res) => {
-    req.session = null                                                                              
-    req.session.currentUser = null
-    req.session.destroy((err) => {
-      res.redirect('/')
+      res.redirect("/auth/profile/"); // <-- rethinking how we reach the user's profile cuz only the current user is allowed to see the own profile, not the one from other people by just entering /user/random-name
     })
+    .catch((err) => {
+      console.log("Something went terribly wrong in the backend, thanks Christian", err);
+      res.render("auth/login", { generalError: "Execute order 66" }); // <-- .hbs page
+    });
+});
+
+
+// LOGOUT
+router.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    // cookie cleared by session.destroy
+    res.redirect("/");
   });
-  
-  module.exports = router;
+});
+module.exports = router;

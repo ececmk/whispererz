@@ -8,6 +8,11 @@
         <li class='to-right'>
             <a href='/auth/login'>Login</a>
         </li>
+        {{#if userId}}
+        <li class='to-right'>
+            <a href='/auth/profile'>Profile</a>
+        </li>
+        {{/if}}
     </ul>
 </div>
 <div class="hero-container">
