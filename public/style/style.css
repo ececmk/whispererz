@@ -167,12 +167,8 @@ background: rgb(216, 216, 216);
   border: 1px black solid;
   border-radius: 10px;
   padding-top: 20px;
-  background: rgb(216, 216, 216);
-  background: linear-gradient(
-    0deg,
-    rgba(216, 216, 216, 1) 1%,
-    rgba(178, 178, 178, 1) 50%
-  );
+  background: rgb(255,208,107);
+  background: linear-gradient(0deg, rgba(255,208,107,1) 1%, rgba(255,213,92,1) 50%);
   font-weight: 400;
   text-align: center;
 }
