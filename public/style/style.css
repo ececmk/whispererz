@@ -1,95 +1,146 @@
-body{
-    background-color: #FFD06B;
-    font-family: 'Barlow', sans-serif;
-    font-family: 'Poppins', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+body {
+  background-color: #ffd06b;
+  font-family: "Barlow", sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/*index.hbs*/
+.navbar {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.logo-wrapper{
+    display: flex;
 }
 .logo {
-    max-width: 120px;
-    max-height: 120px;
-}
-/*index.hbs*/
-
-.navbar {
-    display:flex;  
+  max-width: 120px;
+  max-height: 120px;
+  margin: 2px;
 }
 
 ul {
-    list-style-type: none;
-    margin: 5px;
-    padding: 5px;
-  }
+  list-style-type: none;
+  margin: 5px;
+  padding: 5px;
+}
 
 li {
-    display: inline;
-  }
- 
-.to-right {
-    width: 50%;
-}
-.hero-container {
-    margin-top: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
+  display: inline;
 }
 
-.text-container{
-    max-width: 500px;
-   margin-right: 50px;
+.hero-container {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-container {
+  max-width: 500px;
+  margin-right: 50px;
 }
 
 .hero-title {
-    font-size: 52px;
+  font-size: 52px;
 }
-.hero-text{
-    font-size: 26px;
+.hero-text {
+  font-size: 26px;
 }
 .btn {
-    background: #0F0F0E;
-    background-image: -webkit-linear-gradient(top, #0F0F0E, #5D5D42);
-    background-image: -moz-linear-gradient(top, #0F0F0E, #5D5D42);
-    background-image: -ms-linear-gradient(top, #0F0F0E, #5D5D42);
-    background-image: -o-linear-gradient(top, #0F0F0E, #5D5D42);
-    border-radius: 20px;
-    color: #FFD06B;
-    font-size: 16px;
-    font-weight: 100;
-    padding: 20px;
-    box-shadow: 1px 1px 20px 0 #000000;
-    text-shadow: 1px 1px 20px #000000;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    text-align: center;
- }
+  background: rgb(216, 216, 216);
+  background: linear-gradient(
+    0deg,
+    rgba(216, 216, 216, 1) 1%,
+    rgba(178, 178, 178, 1) 50%
+  );
+  color: black;
+  border: 1px #b2b2b2 solid;
+  border-radius: 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 20px 30px;
+  overflow: hidden;
+  margin: 5px;
+  position: relative;
+  top: 10px;
+}
 
-.secret-img{
-    max-width: 500px;
-    max-height: 500px;
-    border-radius: 10px;
+.btn:hover {
+  background: rgb(178, 178, 178);
+  background: linear-gradient(
+    0deg,
+    rgba(178, 178, 178, 1) 1%,
+    rgba(216, 216, 216, 1) 50%
+  );
+}
+
+.btn-small{
+background: rgb(216, 216, 216);
+  background: linear-gradient(
+    0deg,
+    rgba(216, 216, 216, 1) 1%,
+    rgba(178, 178, 178, 1) 50%
+  );
+  color: black;
+  border: 1px #b2b2b2 solid;
+  border-radius: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 10px 20px;
+  overflow: hidden;
+  margin: 5px;
+  position: relative;
+  top: 10px;
+}
+
+.btn-small:hover {
+    background: rgb(178, 178, 178);
+  background: linear-gradient(
+    0deg,
+    rgba(178, 178, 178, 1) 1%,
+    rgba(216, 216, 216, 1) 50%
+  );
+}
+
+.secret-img {
+  max-width: 500px;
+  max-height: 500px;
+  border-radius: 10px;
 }
 
 /* sing up & login*/
 .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.user-input{
-    width: 300px;
-    height: 50px;
-    border-radius: 20px;
-    margin-bottom: 20px;
+.user-input {
+  width: 300px;
+  height: 50px;
+  border-radius: 20px;
+  margin-bottom: 20px;
 }
 
-.secret-input{
-    width: 300px;
-    height: 200px;
-    border-radius: 20px;
-    margin-bottom: 20px;
+.secret-input {
+  width: 300px;
+  height: 200px;
+  border-radius: 20px;
+  margin-bottom: 20px;
 }
 
 /* User Profile - Share Secret */
@@ -101,6 +152,8 @@ li {
   align-items: center;
   font-family: Barlow;
   font-weight: 400;
+  position: relative;
+  top: 50px;
 }
 .user-secret {
   display: flex;
@@ -114,30 +167,12 @@ li {
   border: 1px black solid;
   border-radius: 10px;
   padding-top: 20px;
-  background-color: #FDEEDC;
+  background: rgb(216, 216, 216);
+  background: linear-gradient(
+    0deg,
+    rgba(216, 216, 216, 1) 1%,
+    rgba(178, 178, 178, 1) 50%
+  );
   font-weight: 400;
   text-align: center;
 }
-
-.btn-small {
-    background: #0F0F0E;
-    background-image: -webkit-linear-gradient(top, #0F0F0E, #5D5D42);
-    background-image: -moz-linear-gradient(top, #0F0F0E, #5D5D42);
-    background-image: -ms-linear-gradient(top, #0F0F0E, #5D5D42);
-    background-image: -o-linear-gradient(top, #0F0F0E, #5D5D42);
-    border-radius: 20px;
-    color: #FFD06B;
-    font-size: 12px;
-    font-weight: 100;
-    padding: 10px 60px;
-    box-shadow: 1px 1px 20px 0 #000000;
-    text-shadow: 1px 1px 20px #000000;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    text-align: center;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-
-

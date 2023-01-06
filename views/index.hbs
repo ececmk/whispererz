@@ -1,16 +1,19 @@
 <div class="navbar">
-       
-    <img class="logo" src="../images/whispererz_logo.png" alt="">
+
+<div class="logo-wrapper">
+     <img class="logo" src="../images/whispererz_logo.png" alt="">
+    <img class="logo" src="../images/whispererz.png" alt="">
+</div>
     <ul>
-        <li class='to-right'>
-            <a href='/auth/signup'>Signup</a>
+        <li>  
+            <a href='/auth/signup'><button class="btn">Sing Up</button></a>
         </li>
-        <li class='to-right'>
-            <a href='/auth/login'>Login</a>
+        <li>
+            <a href='/auth/login'><button class="btn">Login</button></a>
         </li>
         {{#if userId}}
-        <li class='to-right'>
-            <a href='/auth/profile'>Profile</a>
+        <li>
+            <a href='/auth/profile'><button class="btn">Profile</button></a>
         </li>
         {{/if}}
     </ul>
@@ -19,7 +22,7 @@
     <div class="text-container">
     <h1 class="hero-title">Share your secret anonymously</h1>
     <p class="hero-text">Promise, we won't tell anyone!</p>
-    <a href="/auth/signup"><button class="btn start-btn" href="/auth/signup">Start reading secrets</button></a>
+    <a href="/auth/signup"><button class="btn">Start reading secrets</button></a>
     </div>
     <img class="secret-img" src="../images/secret-img.jpeg" alt="">
 </div>
